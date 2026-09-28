@@ -18,13 +18,6 @@
 
 <img src="./assets/team.svg" width="100%" alt="Pilih pemain: anggota Kelompok 1"/>
 
-| Player | Nama | NIM |
-|:---:|:---|:---:|
-| 🟡 P1 | **Andre Alfarid** | `240504154` |
-| 🔵 P2 | **Aditya Nur** | `240504157` |
-| 🩷 P3 | **Cut Syafina Zuhra** | `250504032` |
-| 🟠 P4 | **Risyawatul Fitri** | `250504023` |
-
 </div>
 
 <img src="./assets/divider.svg" width="100%" alt=""/>
