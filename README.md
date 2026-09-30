@@ -70,10 +70,9 @@ Empat pemain, empat cabang, satu boss: merge ke `main` dan rilis versi 1.0.
 
 ## 📜 Misi Kami
 
-**Kelompok 1** adalah tim beranggotakan empat pemain yang menyusun profil ini sebagai bagian dari
-tugas mata kuliah **Rekayasa Perangkat Lunak**. Kami belajar merancang, membangun, dan mengelola
-perangkat lunak secara terstruktur, dengan kolaborasi sebagai kekuatan utama.
+**Kelompok 1** terdiri dari empat pemain yang telah terjebak dalam satu party. Misi utama: menyelesaikan tugas Rekayasa Perangkat Lunak sebelum deadline menyerang.
 
+Kami mempelajari cara merancang, membangun, dan mengelola perangkat lunak secara terstruktur. Modal kami sederhana: kerja sama tim, koneksi internet, dan kalimat sakral “tenang, masih ada waktu.”
 </div>
 
 <!--
