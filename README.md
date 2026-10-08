@@ -16,7 +16,7 @@
 
 ## 🕹️ Player Select
 
-<img src="./assets/k1-team.svg" width="100%" alt="Pilih pemain: anggota Kelompok 1"/>
+<img src="./assets/Team.svg" width="100%" alt="Pilih pemain: anggota Kelompok 1"/>
 
 </div>
 
