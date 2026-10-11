@@ -75,8 +75,11 @@ Empat pemain, empat cabang, satu boss: merge ke `main` dan rilis versi 1.0.
 Kami mempelajari cara merancang, membangun, dan mengelola perangkat lunak secara terstruktur. Modal kami sederhana: kerja sama tim, koneksi internet, dan kalimat sakral “tenang, masih ada waktu.”
 </div>
 
-<!--
-  OPSIONAL - Daftar Misi/Proyek. Hapus tanda komentar ini kalau proyek kelompok sudah siap.
+<p align="center">
+  <a href="./00-Dokumentasi/spesifikasi-solace-coffee.md">
+    <img src="https://img.shields.io/badge/INSERT%20COIN%20▶%20KLIK%20DISINI-SPESIFIKASI%20PROYEK%20SOLACE%20COFFEE-2121FF?style=for-the-badge&logo=ghost&logoColor=FFD800&labelColor=05050F" alt="Dokumen Spesifikasi Solace Coffee">
+  </a>
+</p>
 
 <img src="./assets/divider.svg" width="100%" alt=""/>
 
