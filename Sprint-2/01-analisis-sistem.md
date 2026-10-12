@@ -122,17 +122,53 @@ Melalui diagram konteks ini, terlihat jelas bahwa **Sistem Website Solace Coffee
 ## 3. Sequence Diagram (Alur Proses Checkout & Pembayaran)
 
 <img src="./Sequence Diagram.drawio.png" width="800" alt="Sequence Diagram Solace Coffee">
-
-### 💡 Penjelasan & Cara Kerja (Alur Step-by-Step):
-1. **Pelanggan** menekan tombol *Checkout* pada antarmuka *Website (Frontend)*.
-2. Sistem merespons dengan menampilkan pilihan metode pembayaran[cite: 4].
-3. Setelah pelanggan memilih metode dan menekan *Bayar*, Frontend mengirimkan permintaan (`POST /api/pesanan`) ke **Backend API**[cite: 4].
-4. **Backend API** menyimpan data pesanan berstatus *menunggu* ke dalam **Database**[cite: 4].
-5. Setelah Database mengembalikan ID pesanan, Backend meneruskan permintaan tagihan pembayaran ke **Payment Gateway**[cite: 4].
-6. **Kondisi Berhasil (`alt`):** Jika pembayaran terkonfirmasi sukses oleh *Payment Gateway*, Backend memerintahkan Database untuk memperbarui status pesanan menjadi *diproses*, lalu menampilkan halaman konfirmasi sukses beserta nomor pesanan ke layar pelanggan[cite: 4].
-7. **Kondisi Gagal:** Jika transaksi ditolak/gagal, sistem menampilkan pesan error pembayaran kepada pelanggan[cite: 4].
+Dokumen ini menjelaskan **Sequence Diagram** yang menggambarkan interaksi antar-objek dan urutan kronologis pesan (*messages*) dalam proses checkout hingga penyelesaian pembayaran pada Website Solace Coffee.
 
 ---
+
+## 🏗️ A. Komponen & Objek Sistem (Lifelines)
+
+Terdapat 5 komponen utama yang terlibat dalam urutan proses ini, bergerak dari sisi pengguna hingga ke infrastruktur belakang (*backend*):
+
+1.  **Pelanggan**: Aktor yang menginisiasi tindakan dan menerima respon visual.
+2.  **Website (Frontend)**: Antarmuka aplikasi tempat pengguna berinteraksi langsung.
+3.  **Backend API**: Repositori logika bisnis yang memproses permintaan dari frontend dan menjembatani data.
+4.  **Database**: Sistem penyimpanan terpusat untuk menyimpan dan memperbarui data transaksi.
+5.  **Payment Gateway**: Pihak ketiga eksternal yang memvalidasi otentikasi transaksi keuangan.
+
+---
+
+## 🔄 B. Kronologi Urutan Alur Utama (Sequential Messages)
+
+Berikut adalah tahapan interaksi berurutan berdasarkan nomor urut kronologis pada diagram:
+
+a.  **Klik Checkout**: `Pelanggan` menekan tombol checkout pada antarmuka `Website (Frontend)`.
+b.  **Tampilkan metode bayar**: `Website (Frontend)` merespon dengan menampilkan pilihan cara pembayaran kepada `Pelanggan`.
+c.  **Pilih metode, klik Bayar**: `Pelanggan` menentukan opsi pembayaran dan menekan tombol konfirmasi bayar.
+d.  **POST /api/pesanan**: `Website (Frontend)` mengirimkan data transaksi ke `Backend API` melalui metode permintaan POST.
+e.  **INSERT pesanan (menunggu)**: `Backend API` memerintahkan `Database` untuk memasukkan data pesanan baru dengan status awal berupa *menunggu pembayaran*.
+f.  **Return id pesanan**: `Database` mengembalikan informasi identifikasi (*ID*) unik pesanan yang baru dibuat ke `Backend API`.
+g.  **Minta pembayaran (total, metode)**: `Backend API` melakukan komunikasi eksternal meminta otorisasi transaksi ke `Payment Gateway` dengan menyertakan nominal total tagihan dan metode yang dipilih.
+h.  **Status pembayaran**: `Payment Gateway` mengirimkan status akhir respon hasil transaksi keuangan kembali ke `Backend API`.
+
+---
+
+## 🔀 C. Analisis Percabangan Kondisi (Fragment Alt)
+
+Sistem menggunakan blok kondisi alternatif (**alt**) untuk memisahkan logika penanganan sistem berdasarkan respon dari *Payment Gateway*:
+
+### Kondisi A: [pembayaran berhasil]
+Jika transaksi disahkan oleh penyedia pembayaran, urutan pesan yang berjalan adalah:
+*   **9. UPDATE status -> diproses**: `Backend API` memperbarui data di `Database` untuk mengubah status pesanan dari *menunggu* menjadi *diproses*.
+*   **10. Sukses + no pesanan**: `Backend API` mengirimkan sinyal keberhasilan beserta nomor pesanan resmi ke `Website (Frontend)`.
+*   **11. Tampilkan konfirmasi**: `Website (Frontend)` menampilkan halaman atau pop-up sukses kepada `Pelanggan`.
+
+### Kondisi B: [pembayaran gagal]
+Jika transaksi ditolak atau tidak sah, sistem berbelok ke alur alternatif:
+*   **12. Respon pembayaran gagal**: `Backend API` meneruskan sinyal kegagalan transaksi ke `Website (Frontend)`.
+*   **13. Tampilkan pesan gagal**: `Website (Frontend)` memunculkan notifikasi peringatan kegagalan pembayaran agar dapat dicoba kembali oleh `Pelanggan`.
+
+
 
 ## 4. Class Diagram (Struktur Objek & Basis Data)
 
