@@ -9,9 +9,60 @@ Dokumentasi ini merinci pemodelan sistem fungsional dan struktural dari platform
 <img src="./Use Case.drawio.png" width="800" alt="Use Case Diagram Solace Coffee">
 
 ### 💡 Penjelasan & Cara Kerja:
-* **Pelanggan:** Memiliki hak akses penuh untuk melakukan registrasi/login, melihat daftar menu, mengelola keranjang belanja, melakukan *checkout* pesanan, memilih metode pembayaran (yang terhubung ke *Payment Gateway*), serta memantau lokasi dan jam operasional cafe.
-* **Admin:** Berperan dalam pengelolaan sistem tingkat lanjut yang meliputi pengelolaan data menu (tambah, ubah, hapus), melihat daftar pesanan masuk dari pelanggan, serta mengubah status pesanan (misal: dari "Menunggu" menjadi "Diproses" atau "Selesai").
-* **Relasi Khusus (`<<include>>`):** Proses *Checkout Pesanan* dan *Login* wajib melibatkan aksi *Pilih Metode Pembayaran* dan *Autentikasi* agar transaksi dapat diteruskan ke sistem.
+# ☕ Analisis Sistem Website Solace Coffee
+
+Dokumen ini menyajikan analisis mendalam mengenai fungsionalitas dan interaksi sistem pada **Sistem Website Solace Coffee** berdasarkan struktur *Use Case Diagram* yang telah dirancang.
+
+---
+
+## 👥 A. Identifikasi Aktor (Actors)
+
+Sistem ini melibatkan tiga aktor dengan batas hak akses dan peran yang terdefinisi secara jelas:
+
+*   **Pelanggan (*Primary Actor*)**: Pengguna akhir yang berinteraksi secara eksternal dengan website untuk menjelajahi produk, mengelola pesanan, dan melakukan transaksi belanja.
+*   **Admin (*Secondary Actor*)**: Pengelola internal yang memiliki otoritas penuh untuk memperbarui menu serta mengonfirmasi dan melacak status pesanan masuk.
+*   **Payment Gateway (*External Actor*)**: Sistem pihak ketiga (menyediakan opsi QRIS, E-Wallet, dan Transfer Bank) yang bekerja di latar belakang untuk melakukan otentikasi serta memproses pembayaran.
+
+---
+
+## ⚙️ B. Pembongkaran Fungsionalitas (Use Cases)
+
+Batasan fungsionalitas sistem (*System Boundary*) dikelompokkan berdasarkan hak interaksi masing-masing aktor:
+
+### a. Fitur Spesifik Pelanggan
+*   **Registrasi Akun:** Proses pendaftaran bagi pengguna baru agar data kredensial mereka tersimpan dalam basis data sistem.
+*   **Login:** Pintu masuk otentikasi bagi pelanggan terdaftar untuk mengakses hak istimewa transaksi.
+*   **Lihat Menu:** Modul katalog publik yang menampilkan daftar variasi kopi dan makanan yang tersedia.
+*   **Kelola Keranjang:** Fitur penampung pesanan sementara, memungkinkan pelanggan menambah atau mengurangi item sebelum dibayar.
+*   **Lihat Lokasi dan Jam Operasional:** Informasi umum mengenai toko fisik Solace Coffee yang dapat diakses secara bebas tanpa prasyarat logis.
+
+### b. Fitur Spesifik Admin
+*   **Kelola Data Menu:** Hak eksklusif admin untuk melakukan operasi tambah, ubah, atau hapus (*CRUD*) pada entitas menu jualan.
+*   **Lihat Daftar Pesanan:** Fitur pemantauan antrean transaksi masuk yang dilakukan oleh pelanggan secara *real-time*.
+*   **Ubah Status Pesanan:** Otoritas untuk memperbarui tahapan pengerjaan pesanan dari proses awal hingga siap disajikan.
+
+---
+
+## 🔗 C. Analisis Logika Relasi Pembatas (`<<include>>`)
+
+Kunci utama dari diagram ini terletak pada dua hubungan dependensi wajib (`<<include>>`) yang mengikat proses transaksi pelanggan:
+
+a.  **Checkout Pesanan `<<include>>` Login**
+    *   *Analisis:* Pelanggan diperbolehkan melihat menu dan mengelola keranjang secara bebas. Namun, sesaat sebelum memproses `Checkout Pesanan`, sistem secara wajib memicu fungsi `Login`. Artinya, transaksi tidak dapat dilanjutkan jika pelanggan belum terverifikasi masuk ke dalam akun mereka.
+b.  **Checkout Pesanan `<<include>>` Pilih Metode Pembayaran**
+    *   *Analisis:* Ketika proses checkout berhasil divalidasi, sistem secara otomatis akan menyertakan dan mengarahkan pengguna ke fungsi `Pilih Metode Pembayaran`. Use case ini sekaligus menjadi jembatan penghubung yang memicu keterlibatan langsung dari aktor **Payment Gateway**.
+
+---
+
+## 🔄 D. Penjelasan Runutan Logika Bisnis (Business Logic Flow)
+
+Secara tekstual, interaksi antarkomponen dalam sistem ini berjalan melingkari skenario utama berikut:
+
+*   **Fase Penjelajahan:** Pelanggan mengumpulkan data awal terkait toko melalui fungsi informasi operasional dan melihat-lihat katalog menu yang tersedia.
+*   **Fase Akumulasi:** Item pilihan dimasukkan ke dalam fungsi pengelola keranjang belanja.
+*   **Fase Validasi Transaksi:** Pelanggan melakukan checkout, di mana sistem memaksa pemeriksaan status akun melalui fungsi login. Jika valid, sistem langsung melemparkan alur transaksi ke menu pemilihan metode pembayaran.
+*   **Fase Penyelesaian & Pemrosesan:** Pihak *Payment Gateway* mengesahkan pembayaran tersebut. Setelah dana terverifikasi masuk, giliran sisi *Admin* yang bertindak untuk memantau pesanan melalui daftar transaksi dan melakukan pembaruan status pengerjaan secara berkala hingga pesanan selesai diproses.
+
 
 ---
 
