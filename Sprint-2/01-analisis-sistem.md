@@ -30,7 +30,7 @@ Diagram ini memandang sistem *Website Solace Coffee* sebagai satu kesatuan prose
 
 ## 3. Sequence Diagram (Alur Proses Checkout & Pembayaran)
 
-<img src="./sequence_checkout.png" width="800" alt="Sequence Diagram Solace Coffee">
+<img src="./Sequence Diagram.drawio.png" width="800" alt="Sequence Diagram Solace Coffee">
 
 ### 💡 Penjelasan & Cara Kerja (Alur Step-by-Step):
 1. **Pelanggan** menekan tombol *Checkout* pada antarmuka *Website (Frontend)*.
@@ -45,7 +45,7 @@ Diagram ini memandang sistem *Website Solace Coffee* sebagai satu kesatuan prose
 
 ## 4. Class Diagram (Struktur Objek & Basis Data)
 
-<img src="./class_diagram.png" width="800" alt="Class Diagram Solace Coffee">
+<img src="./Class Diagram.drawio.png" width="800" alt="Class Diagram Solace Coffee">
 
 ### 💡 Penjelasan & Cara Kerja:
 * **Inheritance (Pewarisan):** Kelas induk `User` diturunkan menjadi dua aktor turunan yaitu `Pelanggan` dan `Admin`, yang masing-masing mewarisi atribut dasar seperti `id`, `nama`, `email`, dan `password`.
