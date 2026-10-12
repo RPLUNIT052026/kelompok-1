@@ -17,7 +17,7 @@ Dokumentasi ini merinci pemodelan sistem fungsional dan struktural dari platform
 
 ## 2. Context Diagram (Batasan & Aliran Data Sistem)
 
-<img src="./context_model.png" width="800" alt="Context Diagram Solace Coffee">
+<img src="./Context Model.drawio.png" width="800" alt="Context Diagram Solace Coffee">
 
 ### 💡 Penjelasan & Cara Kerja:
 Diagram ini memandang sistem *Website Solace Coffee* sebagai satu kesatuan proses tunggal yang berinteraksi dengan tiga entitas luar:
