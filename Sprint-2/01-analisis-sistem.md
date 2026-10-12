@@ -8,11 +8,6 @@ Dokumentasi ini merinci pemodelan sistem fungsional dan struktural dari platform
 
 <img src="./Use Case.drawio.png" width="800" alt="Use Case Diagram Solace Coffee">
 
-### 💡 Penjelasan & Cara Kerja:
-# ☕ Analisis Sistem Website Solace Coffee
-
-Dokumen ini menyajikan analisis mendalam mengenai fungsionalitas dan interaksi sistem pada **Sistem Website Solace Coffee** berdasarkan struktur *Use Case Diagram* yang telah dirancang.
-
 ---
 
 ## 👥 A. Identifikasi Aktor (Actors)
