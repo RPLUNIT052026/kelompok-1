@@ -62,17 +62,62 @@ Secara tekstual, interaksi antarkomponen dalam sistem ini berjalan melingkari sk
 ---
 
 ## 2. Context Diagram (Batasan & Aliran Data Sistem)
-
-<img src="./Context Model.drawio.png" width="800" alt="Context Diagram Solace Coffee">
-
-### 💡 Penjelasan & Cara Kerja:
-Diagram ini memandang sistem *Website Solace Coffee* sebagai satu kesatuan proses tunggal yang berinteraksi dengan tiga entitas luar:
-
-* **Pelanggan ➔ Sistem:** Mengirimkan data registrasi/login, pilihan menu, isi keranjang, dan pilihan pembayaran. Sistem kemudian membalas dengan menampilkan daftar menu, harga, informasi lokasi, serta status konfirmasi pesanan[cite: 3].
-* **Admin ➔ Sistem:** Mengirimkan pembaruan data menu serta perubahan status pesanan, dan menerima rekapitulasi daftar pesanan masuk secara *real-time*[cite: 3].
-* **Payment Gateway ➔ Sistem:** Menjadi perantara pihak ketiga yang menerima permintaan pembayaran (total dan metode) serta mengembalikan status transaksi (*berhasil* atau *gagal*) ke dalam sistem[cite: 3].
+Dokumen ini menjelaskan **Diagram Konteks** dari Sistem Website Solace Coffee. Diagram ini memandang seluruh sistem sebagai satu kesatuan proses tunggal (*inti pusat*) dan memetakan seluruh aliran data masuk (*input*) maupun data keluar (*output*) dari dan ke entitas luar (*terminator*).
 
 ---
+<img src="./Context Model.drawio.png" width="800" alt="Context Diagram Solace Coffee">
+
+
+## 👥 A. Entitas Luar (External Entities)
+
+Terdapat tiga entitas luar yang berinteraksi langsung mengirim atau menerima data dari Sistem Website Solace Coffee:
+
+*   **Pelanggan**: Pihak pengguna akhir yang memberikan data masukan pesanan dan menerima informasi timbal balik dari sistem.
+*   **Admin**: Pihak pengelola internal toko yang menyuplai data pengaturan menu serta memperbarui progres layanan.
+*   **Payment Gateway**: Entitas eksternal penyedia layanan keuangan (QRIS, E-Wallet, Bank) yang memproses validasi transaksi secara otomatis.
+
+---
+
+## 🔁 B. Aliran Data Masuk ke Sistem (Input Data Flows)
+
+Aliran data yang **masuk dari entitas luar menuju ke dalam sistem** digambarkan oleh anak panah yang mengarah ke lingkaran tengah (*Sistem Website Solace Coffee*):
+
+### a. Dari Pelanggan ke Sistem
+*   **Data registrasi / login:** Kredensial akun pengguna untuk proses otentikasi.
+*   **Pilihan menu & keranjang:** Data mengenai item kopi/makanan yang dipilih dan dimasukkan ke daftar belanja.
+*   **Metode pembayaran:** Pilihan jalur transaksi keuangan yang dikehendaki pelanggan.
+
+### b. Dari Admin ke Sistem
+*   **Data menu (tambah/ubah/hapus):** Input data katalog berupa nama produk, harga, deskripsi, maupun penghapusan menu.
+*   **Perubahan status pesanan:** Update berkala mengenai tahapan pembuatan pesanan (misal: pesanan diproses atau selesai).
+
+### c. Dari Payment Gateway ke Sistem
+*   **Status pembayaran (berhasil / gagal):** Sinyal respon digital yang menyatakan apakah transaksi keuangan yang dilakukan pelanggan sah dan selesai atau dibatalkan.
+
+---
+
+## ↩️ C. Aliran Data Keluar dari Sistem (Output Data Flows)
+
+Aliran data yang **dikirim dari sistem menuju ke entitas luar** digambarkan oleh anak panah yang keluar dari lingkaran tengah:
+
+### a. Dari Sistem ke Pelanggan
+*   **Daftar menu & harga:** Informasi katalog terupdate yang siap dijelajahi oleh pelanggan.
+*   **Info lokasi & jam buka:** Informasi umum profil operasional kedai Solace Coffee.
+*   **Konfirmasi & status pesanan:** Pemberitahuan real-time mengenai nota transaksi dan status pengerjaan pesanan.
+
+### b. Dari Sistem ke Admin
+*   **Daftar pesanan masuk:** Notifikasi dan rincian pesanan baru yang harus segera diproses oleh tim dapur/barista.
+*   **Data menu terkini:** Tampilan basis data menu saat ini yang sedang aktif tayang di website.
+
+### c. Dari Sistem ke Payment Gateway
+*   **Permintaan pembayaran (metode & total):** Data berupa jumlah tagihan (nominal uang) beserta opsi pembayaran pilihan pelanggan untuk diproses oleh sistem bank/e-wallet.
+
+---
+
+## 📌 D. Kesimpulan Batasan Sistem (System Boundary)
+
+Melalui diagram konteks ini, terlihat jelas bahwa **Sistem Website Solace Coffee** bertindak sebagai **jembatan informasi otomatis**. Sistem tidak memproses uang secara mandiri melainkan mengalokasikannya ke *Payment Gateway*, dan sistem tidak membuat kopi secara fisik melainkan meneruskan datanya dalam bentuk *Daftar pesanan masuk* ke pihak *Admin* selaku eksekutor operasional.
+
 
 ## 3. Sequence Diagram (Alur Proses Checkout & Pembayaran)
 
