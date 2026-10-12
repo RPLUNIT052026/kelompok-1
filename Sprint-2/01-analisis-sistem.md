@@ -171,16 +171,69 @@ Jika transaksi ditolak atau tidak sah, sistem berbelok ke alur alternatif:
 
 
 ## 4. Class Diagram (Struktur Objek & Basis Data)
-
+Dokumen ini menjelaskan **Class Diagram** yang menggambarkan struktur sistem, kelas-kelas objek, atribut, metode (*method/function*), serta hubungan logis antar-komponen data di dalam basis data Website Solace Coffee.
+---
 <img src="./Class Diagram.drawio.png" width="800" alt="Class Diagram Solace Coffee">
 
-### 💡 Penjelasan & Cara Kerja:
-* **Inheritance (Pewarisan):** Kelas induk `User` diturunkan menjadi dua aktor turunan yaitu `Pelanggan` dan `Admin`, yang masing-masing mewarisi atribut dasar seperti `id`, `nama`, `email`, dan `password`.
-* **Relasi Pesanan & Menu:**
-  * `Pelanggan` dapat membuat banyak objek `Pesanan` (relasi 1 ke `*`)[cite: 2].
-  * Satu `Pesanan` terdiri dari beberapa `DetailPesanan` yang merujuk pada data `Menu` tertentu[cite: 2].
-  * `Admin` bertugas *mengelola* data `Menu` yang tersedia di aplikasi[cite: 2].
-  * Proses transaksi diikat oleh kelas `Pembayaran` yang mencatat metode, jumlah bayar, waktu, serta status transaksi[cite: 2].
+
+## 🏛️ A. Struktur Kelas Utama dan Atribut (Classes & Attributes)
+
+Sistem ini didukung oleh 7 kelas entitas data yang saling terhubung dengan rincian sebagai berikut:
+
+*   **User**: Kelas dasar (super-class) abstrak untuk pengguna sistem.
+    *   *Atribut:* `id: int`, `name: String`, `email: String`, `password: String`.
+    *   *Metode:* `login()`, `logout()`.
+*   **Pelanggan**: Kelas turunan dari User yang merepresentasikan konsumen.
+    *   *Metode:* `registrasi()`, `lihatMenu()`, `checkout()`, `lihatStatusPesanan()`.
+*   **Admin**: Kelas turunan dari User yang merepresentasikan pengelola sistem.
+    *   *Metode:* `kelolaMenu()`, `ubahStatusPesanan()`.
+*   **Keranjang**: Wadah penampung barang sementara milik pelanggan.
+    *   *Atribut:* `idKeranjang: int`, `items: List`.
+    *   *Metode:* `tambahItem()`, `ubahJumlah()`, `hapusItem()`, `hitungTotal()`.
+*   **Menu**: Entitas produk makanan atau kopi yang dijual.
+    *   *Atribut:* `id: int`, `namaMenu: String`, `kategori: String`, `harga: int`, `deskripsi: String`.
+    *   *Metode:* `getDetail()`, `ubahHarga()`.
+*   **Pesanan**: Entitas utama yang merekam transaksi pembelian.
+    *   *Atribut:* `id: int`, `tanggal: DateTime`, `status: String`, `totalHarga: int`.
+    *   *Metode:* `buatPesanan()`, `hitungTotal()`, `ubahStatus()`.
+*   **DetailPesanan**: Kelas perantara untuk merinci item yang dibeli dalam satu pesanan.
+    *   *Atribut:* `id: int`, `jumlah: int`, `subtotal: int`.
+    *   *Metode:* `hitungSubtotal()`.
+*   **Pembayaran**: Kelas rekaman validasi transaksi keuangan.
+    *   *Atribut:* `id: int`, `metode: String`, `jumlahBayar: int`, `status: String`, `waktuBayar: DateTime`.
+    *   *Metode:* `prosesPembayaran()`, `cekStatus()`.
 
 ---
+
+## 🔗 B. Analisis Hubungan Pewarisan (Generalization / Inheritance)
+
+Terdapat relasi pewarisan yang digambarkan dengan panah segitiga kosong mengarah ke atas:
+*   Kelas **User** bertindak sebagai *Parent Class*.
+*   Kelas **Pelanggan** dan **Admin** adalah *Child Class* yang mewarisi (*inherit*) seluruh atribut dasar (`id`, `name`, `email`, `password`) serta fungsi utama (`login()`, `logout()`) milik kelas **User**.
+
+---
+
+## 🔀 C. Hubungan Antar-Kelas dan Multiplisitas (Associations & Multiplicity)
+
+Relasi antar-tabel atau objek dalam diagram ini diatur secara logis oleh aturan kardinalitas berikut:
+
+*   **Pelanggan dengan Keranjang (`memiliki`)**
+    *   *Kardinalitas:* `1` ke `1`.
+    *   *Analisis:* Setiap **1** Pelanggan hanya bisa memiliki **1** Keranjang aktif untuk menampung item belanjaannya.
+*   **Pelanggan dengan Pesanan (`membuat`)**
+    *   *Kardinalitas:* `1` ke `1..*`.
+    *   *Analisis:* **1** Pelanggan dapat membuat **1 sampai banyak** catatan Pesanan seiring berjalannya waktu.
+*   **Admin dengan Menu (`mengelola`)**
+    *   *Kardinalitas:* `1` ke `1..*`.
+    *   *Analisis:* **1** Admin memiliki otoritas untuk mengelola **1 hingga banyak** data Menu yang ada di dalam sistem.
+*   **Pesanan dengan DetailPesanan (`terdiri dari`)**
+    *   *Kardinalitas:* `1` ke `1..*`.
+    *   *Analisis:* Setiap **1** nota Pesanan wajib memiliki minimal **1 atau banyak** rincian DetailPesanan di dalamnya.
+*   **Menu dengan DetailPesanan (`termasuk`)**
+    *   *Kardinalitas:* `1` ke `1..*`.
+    *   *Analisis:* Setiap **1** Menu spesifik dapat tercatat di dalam **1 atau banyak** baris DetailPesanan milik pelanggan yang berbeda-beda.
+*   **Pesanan dengan Pembayaran (`memiliki`)**
+    *   *Kardinalitas:* `1` ke `1`.
+    *   *Analisis:* Setiap **1** Pesanan yang sukses terbuat dipasangkan tepat dengan **1** catatan proses Pembayaran untuk memastikan validasi dana transaksi.
+
 *Developed with ☕ by Kelompok 1 - Rekayasa Perangkat Lunak*
