@@ -6,7 +6,7 @@ Dokumentasi ini merinci pemodelan sistem fungsional dan struktural dari platform
 
 ## 1. Use Case Diagram (Interaksi Pengguna dengan Sistem)
 
-<img src="./use_case.png" width="800" alt="Use Case Diagram Solace Coffee">
+<img src="./Use Case.drawio.png" width="800" alt="Use Case Diagram Solace Coffee">
 
 ### 💡 Penjelasan & Cara Kerja:
 * **Pelanggan:** Memiliki hak akses penuh untuk melakukan registrasi/login, melihat daftar menu, mengelola keranjang belanja, melakukan *checkout* pesanan, memilih metode pembayaran (yang terhubung ke *Payment Gateway*), serta memantau lokasi dan jam operasional cafe.
