@@ -13,7 +13,7 @@ Dokumentasi ini merinci tahapan perancangan **Website Pemesanan Menu Online Sola
 
 ## 1. Flowchart Sistem (Alur Proses Bisnis)
 
-<img src="./Sprint 1/flowchart_pemesanan.jpg" width="800" alt="Flowchart Sistem Solace Coffee">
+<img src="./Sprint 1/flowchart_pemesanan.jpg" width="800" alt="Sprint 1/flowchart_pemesanan.jpg">
 
 Tahap pertama dalam pembuatan web adalah memahami **urutan proses** yang akan dijalankan sistem. **Flowchart** ini menggambarkan alur autentikasi, pemesanan, pembayaran oleh pelanggan, serta pengelolaan oleh admin, sehingga menjadi acuan bagi seluruh tahap perancangan berikutnya.
 
