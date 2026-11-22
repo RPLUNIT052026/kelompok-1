@@ -140,15 +140,7 @@ Proyek ini menggunakan kerangka kerja **Agile dengan pendekatan Scrum**. Alasann
 
 ---
 
-## ⚠️ 6. Catatan Konsistensi Antar Diagram
 
-1. **Metode pembayaran:** Flowchart memuat PayLater dan GoPay, wireframe hanya QRIS, E-Wallet (DANA/OVO), dan Transfer Bank. PayLater tidak dimasukkan ke kebutuhan.
-2. **Kategori menu:** Flowchart menyebut 5 kategori, sedangkan filter di wireframe hanya Semua, Makanan, Minuman, Dessert.
-3. **Pembayaran gagal:** Activity langsung kembali ke checkout, Flowchart punya opsi bayar ulang/batal. Status "Dibatalkan" belum ada di wireframe admin.
-4. **Registrasi:** Ada di Flowchart dan Class, tetapi tidak di Sequence, Activity, maupun wireframe.
-5. **Relasi Keranjang:** Class 1:1 (satu keranjang per pelanggan), ERD 1:N (satu baris per item).
-6. **Status "Selesai":** Ada di wireframe admin, tetapi belum ada alur yang menjelaskan kapan statusnya berubah.
-7. **Alamat dan No. HP:** Diminta di checkout, tetapi ERD menyimpannya di `USERS`, bukan `PESANAN`.
 
 ---
 
