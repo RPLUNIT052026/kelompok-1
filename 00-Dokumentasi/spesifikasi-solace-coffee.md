@@ -6,7 +6,6 @@
 
 ## 📜 1. Pengenalan Proyek (Introduction)
 
-### 🫘 Latar Belakang & Tujuan
 | Parameter | Detail Spesifikasi |
 | :--- | :--- |
 | **Nama Proyek** | **Digital Twin Solace Coffee** |
@@ -18,31 +17,25 @@
 
 ## 🔄 2. Metodologi & Manajemen Tim (Agile/Scrum)
 
-### 📌 Penjelasan Pendekatan Metodologi
-Dalam pengembangan proyek **Digital Twin Solace Coffee**, kami menggunakan kerangka kerja **Agile dengan pendekatan Scrum**. Alasan penggunaan metode ini adalah fleksibilitasnya dalam menghadapi perubahan kebutuhan serta kemampuannya memecah proyek besar menjadi siklus pengerjaan pendek yang disebut **Sprint** (biasanya berdurasi 1–2 minggu). 
+### 📌 Pendekatan Metodologi
+Proyek ini menggunakan kerangka kerja **Agile dengan pendekatan Scrum**. Alasannya, metode ini fleksibel terhadap perubahan kebutuhan dan memecah proyek besar menjadi siklus pendek (**Sprint**, 1–2 minggu). Setiap fitur (desain antarmuka, API, basis data) dikembangkan, diuji, dan dievaluasi secara bertahap.
 
-Dengan metodologi ini, setiap fitur (mulai dari desain antarmuka, pembuatan API, hingga basis data) dapat dikembangkan, diuji, dan dievaluasi secara bertahap dan berkelanjutan hingga menghasilkan aplikasi *full-stack* yang siap rilis.
-
-### 👥 Strategi & Pembagian Peran Tim (Role Delegation)
-Struktur peran di bawah ini dirancang berdasarkan pembagian kompetensi fungsional agar pembagian tugas dalam kelompok lebih terarah. Silakan sesuaikan nama penanggung jawab sesuai dengan anggota kelompok Anda:
-
-| Peran (Role) | Penanggung Jawab | Tanggung Jawab Utama & Alasan Pembagian |
+### 👥 Pembagian Peran Tim
+| Peran | Penanggung Jawab | Tanggung Jawab Utama |
 | :--- | :--- | :--- |
-| **Scrum Master** | *[Nama Anggota]* | **Fokus:** Pengelolaan alur kerja dan komunikasi tim.<br>**Tugas:** Memastikan jalannya Sprint sesuai target waktu, memfasilitasi diskusi harian (*daily standup*), serta menjadi penghubung jika ada hambatan teknis antar anggota. |
-| **UI/UX Designer** | *[Nama Anggota]* | **Fokus:** Tampilan visual dan pengalaman pengguna.<br>**Tugas:** Menerjemahkan ide konsep cafe ke dalam bentuk *wireframe*, *mockup* UI untuk perangkat Desktop dan Mobile, serta merancang alur navigasi (*User Flow*) agar mudah digunakan pelanggan. |
-| **Frontend Developer** | *[Nama Anggota]* | **Fokus:** Sisi klien (*Client-Side*).<br>**Tugas:** Mengubah desain visual dari UI/UX Designer menjadi kode program yang interaktif menggunakan HTML, CSS, JavaScript, atau framework modern (seperti React.js) yang terhubung responsif di berbagai layar. |
-| **Backend Developer** | *[Nama Anggota]* | **Fokus:** Sisi server dan manajemen data.<br>**Tugas:** Membangun *RESTful API* (menggunakan Express.js/Laravel), mengatur logika bisnis autentikasi serta sistem keranjang/pembayaran, dan merancang struktur skema basis data MySQL. |
+| **Scrum Master** | *[Nama Anggota]* | Mengelola alur kerja dan komunikasi tim, memastikan Sprint sesuai target, memfasilitasi *daily standup*, dan menangani hambatan antar anggota. |
+| **UI/UX Designer** | *[Nama Anggota]* | Membuat *wireframe*, *mockup* UI Desktop dan Mobile, serta *user flow* yang mudah digunakan pelanggan. |
+| **Frontend Developer** | *[Nama Anggota]* | Mengubah desain menjadi antarmuka interaktif (HTML, CSS, JavaScript, atau React.js) yang responsif. |
+| **Backend Developer** | *[Nama Anggota]* | Membangun *RESTful API* (Express.js/Laravel), logika autentikasi, keranjang, pembayaran, dan skema basis data MySQL. |
 
-> 💡 *Catatan Tips:* Jika jumlah anggota kelompok lebih sedikit dari jumlah peran yang ada, satu orang dapat memegang dua peran yang beririsan (misalnya: Backend Developer juga merangkap sebagai pengelola basis data).
+> 💡 Jika anggota kelompok lebih sedikit dari jumlah peran, satu orang dapat memegang dua peran yang beririsan.
 
-### 📅 Perencanaan Sprint (Sprint Planning)
-Pengerjaan proyek dibagi ke dalam 3 tahapan *Sprint* utama agar beban kerja terdistribusi dengan rapi:
-
-| Sprint | Fokus Pengerjaan | Target Deliverables (Hasil Akhir) |
+### 📅 Perencanaan Sprint
+| Sprint | Fokus Pengerjaan | Target Deliverables |
 | :---: | :--- | :--- |
-| **Sprint 1** | Analisis Kebutuhan, *Flowchart*, *Wireframe Desktop*, *ERD*, & *Arsitektur Sistem* | Dokumen Desain, Perancangan Alur, & Blueprint Teknis Sistem |
-| **Sprint 2** | Slicing Frontend UI, Setup RESTful API, & Implementasi Database MySQL | Prototipe Komponen UI yang berjalan dan Endpoint API dasar |
-| **Sprint 3** | Integrasi Payment Gateway, Admin Panel, Sistem Testing, & Deployment | Aplikasi *Full-Stack* Digital Twin Solace Coffee Siap Rilis |
+| **Sprint 1** | Analisis kebutuhan, *user story*, *flowchart*, *wireframe desktop*, *ERD*, dan arsitektur sistem | Dokumen desain, alur, dan *blueprint* teknis |
+| **Sprint 2** | *Slicing* frontend UI, setup RESTful API, implementasi database MySQL | Prototipe komponen UI dan endpoint API dasar |
+| **Sprint 3** | Integrasi Payment Gateway, Admin Panel, testing, dan deployment | Aplikasi *full-stack* siap rilis |
 
 ---
 
@@ -51,64 +44,111 @@ Pengerjaan proyek dibagi ke dalam 3 tahapan *Sprint* utama agar beban kerja terd
 ### 👤 Aktor Sistem
 | Aktor | Deskripsi Peran & Hak Akses |
 | :---: | :--- |
-| **Pelanggan (User)** | Mengakses platform web, melakukan registrasi/login, mengeksplorasi menu, memilih produk, checkout, dan membayar. |
-| **Admin Cafe** | Mengakses *Admin Panel* khusus yang terhubung ke API terpusat untuk memantau dan mengelola data katalog menu. |
+| **Pelanggan** | Registrasi/login, melihat menu, memilih produk, checkout, membayar, dan melihat status pesanan. |
+| **Admin Cafe** | Mengakses *Admin Panel* untuk mengelola data menu serta memantau dan mengubah status pesanan. |
+| **Payment Gateway** | Sistem eksternal (QRIS, E-Wallet, Bank) yang memproses pembayaran. Bukan pengguna, sehingga tidak dibuat *user story*. |
 
-### ⚙️ Matriks Kebutuhan Fungsional (Fitur Aplikasi)
-| Modul Fitur | Kebutuhan Fungsional | Akses Aktor |
-| :--- | :--- | :---: |
-| **Autentikasi** | Registrasi akun baru serta autentikasi *Login* menggunakan email & password. | Pelanggan |
-| **Eksplorasi Menu** | Navigasi halaman utama (*Home*, *Menu*, *Lokasi*, *Login*), *Hero Banner*, & filter kategori. | Pelanggan |
-| **Kategori Produk** | Pengelompokan produk: `Kopi`, `Non-Kopi`, `Snack`, `Makanan Berat`, dan `Dessert`. | Pelanggan |
-| **Informasi Cafe** | Penampilan peta lokasi fisik cafe terintegrasi dan informasi jam operasional *live*. | Pelanggan |
-| **Keranjang & Checkout**| Pemilihan item produk, manajemen keranjang belanja, dan pemrosesan pesanan. | Pelanggan |
-| **Pembayaran Digital**| Integrasi metode pembayaran: **QRIS**, **DANA**, **OVO**, **GoPay**, dan **Transfer Bank**. | Pelanggan |
-| **Manajemen Katalog** | Fitur Pengelolaan Data Menu (*Create, Read, Update, Delete*) via *Admin Panel*. | Admin |
-
----
-
-## 🎨 4. Perancangan Sistem secara Visual & Logika (Design & Architecture)
-
-### 🔀 1. Flowchart Pemesanan (Alur Transaksi Digital)
-| Langkah | Aktivitas Pengguna / Sistem | Output / Status Sistem |
-| :---: | :--- | :--- |
-| **1** | Pengguna membuka platform web **Solace Coffee** | Menampilkan Halaman Utama |
-| **2** | Verifikasi Akun (Registrasi jika belum ada / Login jika sudah ada) | Sesi Akun Terverifikasi |
-| **3** | Mengakses Katalog, memilih produk, & menambah ke keranjang | Item Masuk Keranjang Belanja |
-| **4** | Melakukan Checkout & Memilih Metode Pembayaran Digital | Form Pembayaran Terbentuk |
-| **5** | Pemrosesan Pembayaran (QRIS / E-Wallet / Bank Transfer) | **Konfirmasi Pesanan** (jika sukses) / Retransaksi (jika gagal) |
+### ⚙️ Matriks Kebutuhan Fungsional
+| Modul Fitur | Kebutuhan Fungsional | Aktor | User Story |
+| :--- | :--- | :---: | :---: |
+| **Autentikasi** | Registrasi akun baru dan *login* dengan email & password. Sistem mengarahkan pengguna sesuai `role`. | Pelanggan, Admin | US-01, 02, 14, 15, 20 |
+| **Eksplorasi Menu** | Katalog menu dengan gambar, deskripsi, harga, dan filter kategori. | Pelanggan | US-03, 04 |
+| **Kategori Produk** | `Kopi`, `Non-Kopi`, `Snack`, `Makanan Berat`, `Dessert`. | Pelanggan | US-04 |
+| **Informasi Cafe** | Peta lokasi dan jam operasional. | Pelanggan | US-13 |
+| **Keranjang & Checkout** | Tambah/ubah/hapus item keranjang dan pemrosesan pesanan. | Pelanggan | US-05, 06, 07 |
+| **Pembayaran Digital** | QRIS, E-Wallet (DANA, OVO, GoPay), dan Transfer Bank, termasuk konfirmasi dan penanganan gagal bayar. | Pelanggan | US-08, 09, 10, 11 |
+| **Status Pesanan** | Pelanggan melihat status pesanan. Admin memantau, mencari, dan mengubah status. | Pelanggan, Admin | US-12, 17, 18, 19 |
+| **Manajemen Katalog** | Pengelolaan data menu (*Create, Read, Update, Delete*) via *Admin Panel*. | Admin | US-16 |
 
 ---
 
-### 🖥️ 2. Wireframe & Mockup UI Desktop Layout
-| Komponen Layout | Elemen Visual & Fungsi |
-| :--- | :--- |
-| **Header / Navbar** | Logo Brand Solace Coffee, Menu Navigasi (*Home*, *Menu*, *Lokasi*), & Tombol Login/Akun. |
-| **Hero Banner** | Visual banner cafe utama dilengkapi tombol *Call-to-Action* ("Lihat Menu"). |
-| **Bilah Filter** | Filter interaktif kategori: `Kopi` \| `Non-Kopi` \| `Snack` \| `Makanan Berat` \| `Dessert`. |
-| **Product Grid** | Grid kartu produk (Menu 1 – Menu 4) yang menampilkan foto, nama produk, & harga. |
-| **Info Visitor** | Area peta lokasi fisik cafe dan informasi jam operasional. |
-| **Footer** | Informasi kontak cafe, tautan media sosial, dan catatan *copyright*. |
+## 📝 4. User Story
+
+> Disusun dari diagram rancangan (Context, Flowchart, Activity, Sequence, Class, ERD, Arsitektur, Wireframe). Fitur di luar diagram tidak ditambahkan.
+
+### A. Pelanggan
+
+| ID | User Story | Kriteria Penerimaan | Sumber |
+|---|---|---|---|
+| US-01 | Sebagai pelanggan, saya ingin **registrasi akun** agar bisa memesan. | Data tersimpan di `USERS` dengan role "pelanggan". | Flowchart, Class |
+| US-02 | Sebagai pelanggan, saya ingin **login** agar bisa mengakses sistem. | Kredensial valid: tampil daftar menu. Salah: pesan error (401) dan bisa input ulang. | Sequence, Activity, Flowchart |
+| US-03 | Sebagai pelanggan, saya ingin **melihat katalog menu** agar tahu apa yang bisa dipesan. | Kartu menu menampilkan gambar, nama, deskripsi, dan harga. | Wireframe 1, Class |
+| US-04 | Sebagai pelanggan, saya ingin **memfilter menu per kategori** agar cepat menemukan menu. | Katalog hanya menampilkan menu sesuai kategori yang dipilih. | Wireframe 1, ERD |
+| US-05 | Sebagai pelanggan, saya ingin **menambah menu ke keranjang** agar bisa memesan beberapa menu. | Tombol "+ Keranjang" menyimpan ke `KERANJANG`. Ikon keranjang menampilkan jumlah item. | Wireframe 1, Activity, Class |
+| US-06 | Sebagai pelanggan, saya ingin **mengubah jumlah dan menghapus item** agar pesanan sesuai. | Tombol +/− dan "Hapus" memperbarui subtotal dan total otomatis. | Wireframe 2, Class |
+| US-07 | Sebagai pelanggan, saya ingin **checkout** agar pesanan tercatat. | Halaman checkout berisi nama, No. HP, alamat, ringkasan. Sistem membuat `PESANAN` dan `DETAIL_PESANAN` berstatus "Menunggu Pembayaran". | Wireframe 2–3, Sequence, ERD |
+| US-08 | Sebagai pelanggan, saya ingin **memilih metode pembayaran** agar bisa membayar dengan nyaman. | Pilihan: QRIS, E-Wallet, Transfer Bank. QRIS menampilkan kode QR dan panduan. | Wireframe 3, Sequence |
+| US-09 | Sebagai pelanggan, saya ingin **membayar pesanan** agar pesanan diproses. | "Bayar Sekarang" mengirim total dan metode ke Payment Gateway. Jika berhasil, status menjadi "Diproses". | Sequence, Activity, Context |
+| US-10 | Sebagai pelanggan, saya ingin **menerima konfirmasi pesanan** agar yakin pembayaran berhasil. | Tampil nomor pesanan dan bukti pembayaran. | Sequence, Activity, Flowchart |
+| US-11 | Sebagai pelanggan, saya ingin **diberi tahu jika pembayaran gagal** agar bisa mengulang atau membatalkan. | Tampil pesan gagal. Pilihan: bayar ulang atau batalkan (status "Dibatalkan"). | Sequence, Flowchart, Activity |
+| US-12 | Sebagai pelanggan, saya ingin **melihat status pesanan** agar tahu progresnya. | Status terlihat (Menunggu Pembayaran, Diproses, Selesai). | Class, Context, Arsitektur |
+| US-13 | Sebagai pelanggan, saya ingin **melihat lokasi dan jam operasional** agar tahu kapan dan di mana berkunjung. | Halaman utama menampilkan alamat, telepon, peta, dan jam buka. | Wireframe 1, Context |
+| US-14 | Sebagai pelanggan, saya ingin **logout** agar akun aman. | Sesi berakhir setelah logout. | Class, Flowchart |
+
+### B. Admin
+
+| ID | User Story | Kriteria Penerimaan | Sumber |
+|---|---|---|---|
+| US-15 | Sebagai admin, saya ingin **login ke dashboard admin** agar bisa mengelola toko. | Sistem cek `USERS.role`. Jika "admin", diarahkan ke dashboard. | Flowchart, ERD, Arsitektur |
+| US-16 | Sebagai admin, saya ingin **mengelola data menu (CRUD)** agar katalog selalu terbaru. | Perubahan tersimpan di `MENU` dan tampil di katalog pelanggan. | Flowchart, Class, Wireframe 4 |
+| US-17 | Sebagai admin, saya ingin **melihat daftar pesanan masuk** agar bisa memantau transaksi. | Daftar menampilkan No. Pesanan, Pelanggan, Tanggal, Total, Status. | Wireframe 4, Context |
+| US-18 | Sebagai admin, saya ingin **mencari dan memfilter pesanan** agar cepat menemukan pesanan. | Cari by no. pesanan/pelanggan, filter status, ada pagination. | Wireframe 4 |
+| US-19 | Sebagai admin, saya ingin **mengubah status pesanan** agar pelanggan tahu progresnya. | Tombol "Ubah Status Pesanan" mengubah status dan terlihat di sisi pelanggan. | Wireframe 4, Class, Context |
+| US-20 | Sebagai admin, saya ingin **logout** agar akses dashboard aman. | Logout lewat menu sidebar. | Flowchart, Wireframe 4 |
 
 ---
 
-### 🏗️ 3. Arsitektur Teknologi & Basis Data (ERD)
+## 🎨 5. Perancangan Sistem (Design & Architecture)
 
-#### 💻 Stack Arsitektur Sistem
-| Layer Arsitektur | Teknologi / Framework | Fungsi dalam Digital Twin |
+### 🔀 5.1 Flowchart Pemesanan
+| Langkah | Aktivitas Pengguna / Sistem | Output / Status Sistem | Story |
+| :---: | :--- | :--- | :---: |
+| **1** | Pengguna membuka web **Solace Coffee** | Halaman utama tampil | US-03 |
+| **2** | Registrasi atau login. Sistem cek `USERS.role` | Pelanggan ke katalog, admin ke dashboard | US-01, 02, 15 |
+| **3** | Memilih produk dan menambah ke keranjang | Item masuk `KERANJANG` | US-05, 06 |
+| **4** | Checkout dan memilih metode pembayaran | `PESANAN` & `DETAIL_PESANAN` dibuat, status "Menunggu Pembayaran" | US-07, 08 |
+| **5** | Pembayaran diproses via Payment Gateway | Sukses: status "Diproses" dan konfirmasi pesanan. Gagal: opsi bayar ulang atau batal | US-09, 10, 11 |
+
+### 🖥️ 5.2 Wireframe Desktop
+| No. | Halaman | Elemen Utama | Story |
+| :---: | :--- | :--- | :---: |
+| **1** | Landing Page & Katalog Menu | Navbar (logo, navigasi, keranjang, login), filter kategori, kartu menu, lokasi toko, peta, jam operasional | US-03, 04, 05, 13 |
+| **2** | Keranjang | Daftar item dengan qty (+/−), subtotal, tombol Hapus, ringkasan pesanan, "Lanjut ke Checkout" | US-06, 07 |
+| **3** | Checkout & Pembayaran | Form nama, No. HP, alamat, pilihan metode bayar, kode QRIS, "Bayar Sekarang" | US-07, 08, 09 |
+| **4** | Dashboard Admin | Sidebar (Kelola Data Menu, Daftar Pesanan Masuk, Logout), pencarian, filter status, tabel pesanan, "Ubah Status Pesanan" | US-16 – 20 |
+
+### 🏗️ 5.3 Arsitektur Teknologi
+
+| Layer | Teknologi | Fungsi |
 | :--- | :--- | :--- |
-| **Client Side (Frontend)** | React.js / HTML5, CSS3, JS (Desktop & Mobile) | Tampilan antarmuka web yang responsif dan interaktif. |
-| **Communication Layer** | RESTful HTTP Requests | Jalur komunikasi data antara aplikasi *Client* dan *Server*. |
-| **Server Side (Backend API)**| Express.js / Laravel | Mengelola autentikasi, logika pemesanan, dan aturan bisnis. |
-| **Database Engine** | MySQL Relational Database | Menyimpan data terstruktur secara aman dan konsisten. |
-| **Management Interface** | Admin Panel Web | Panel kontrol khusus pengelola untuk update katalog menu. |
+| **Client (Frontend)** | Website Pelanggan dan Dashboard Admin (React.js / HTML5, CSS3, JS) | Antarmuka responsif untuk pelanggan dan admin |
+| **Komunikasi** | HTTPS · REST API | Jalur data antara client dan server |
+| **Backend** | REST API Server (Express.js / Laravel) | Logika bisnis dan autentikasi |
+| **Database** | MySQL (6 tabel) | Penyimpanan data terstruktur |
+| **External Services** | Payment Gateway API (QRIS, DANA, OVO, Bank) | Pemrosesan pembayaran pihak ketiga |
 
-#### 🗄️ Relasi Basis Data (Entity Relationship Diagram - ERD)
-| Nama Tabel | Atribut Utama | Relasi & Deskripsi |
+### 🗄️ 5.4 Relasi Basis Data (ERD)
+
+| Tabel | Atribut Utama | Relasi |
 | :--- | :--- | :--- |
-| **`USERS`** | `id` (PK), `nama`, `email`, `password` | **1 to N** ke `PESANAN` *(Satu user dapat membuat banyak pesanan)* |
-| **`MENU`** | `id` (PK), `nama_menu`, `kategori`, `harga` | **1 to N** ke `PESANAN` *(Satu menu dapat dipesan di banyak pesanan)* |
-| **`PESANAN`** | `id` (PK), `user_id` (FK), `menu_id` (FK), `jumlah`, `status`, `tanggal` | Tabel Penghubung Log Pemesanan & Transaksi |
+| **`USERS`** | `id` (PK), `nama`, `email`, `password`, `no_hp`, `alamat`, `role` ('pelanggan' / 'admin') | 1:N ke `KERANJANG` dan `PESANAN` |
+| **`MENU`** | `id` (PK), `nama_menu`, `kategori`, `harga`, `deskripsi`, `gambar` | 1:N ke `KERANJANG` dan `DETAIL_PESANAN` |
+| **`KERANJANG`** | `id` (PK), `user_id` (FK), `menu_id` (FK), `jumlah` | Satu baris per item keranjang |
+| **`PESANAN`** | `id` (PK), `user_id` (FK), `tanggal`, `total_harga`, `status` | 1:N ke `DETAIL_PESANAN`, 1:1 ke `PEMBAYARAN` |
+| **`DETAIL_PESANAN`** | `id` (PK), `pesanan_id` (FK), `menu_id` (FK), `jumlah`, `subtotal` | Rincian item per pesanan |
+| **`PEMBAYARAN`** | `id` (PK), `pesanan_id` (FK), `metode_pembayaran`, `jumlah_bayar`, `status_pembayaran`, `waktu_bayar` | 1:1 ke `PESANAN` |
+
+---
+
+## ⚠️ 6. Catatan Konsistensi Antar Diagram
+
+1. **Metode pembayaran:** Flowchart memuat PayLater dan GoPay, wireframe hanya QRIS, E-Wallet (DANA/OVO), dan Transfer Bank. PayLater tidak dimasukkan ke kebutuhan.
+2. **Kategori menu:** Flowchart menyebut 5 kategori, sedangkan filter di wireframe hanya Semua, Makanan, Minuman, Dessert.
+3. **Pembayaran gagal:** Activity langsung kembali ke checkout, Flowchart punya opsi bayar ulang/batal. Status "Dibatalkan" belum ada di wireframe admin.
+4. **Registrasi:** Ada di Flowchart dan Class, tetapi tidak di Sequence, Activity, maupun wireframe.
+5. **Relasi Keranjang:** Class 1:1 (satu keranjang per pelanggan), ERD 1:N (satu baris per item).
+6. **Status "Selesai":** Ada di wireframe admin, tetapi belum ada alur yang menjelaskan kapan statusnya berubah.
+7. **Alamat dan No. HP:** Diminta di checkout, tetapi ERD menyimpannya di `USERS`, bukan `PESANAN`.
 
 ---
 
